@@ -1,0 +1,40 @@
+<br>
+<div class="container">
+	<table class="table table-responsive table-striped">
+		<tbody>
+
+			<tr>
+		  	<td><strong>Name:</strong></td>
+		  	<td><%= @project.name %></td>
+		  </tr>
+
+			<tr>
+				<td><strong>Documentation:</strong></td>
+				<td><%= @project.documentation %></td>
+			</tr>
+
+			<tr>
+				<td><strong>Project Cost:</strong></td>
+				<td><%= @project.project_cost%></td>
+			</tr>
+
+			<tr>
+				<td><strong>Time Tracking:</strong></td>
+				<td><%= @project.time_tracking %></td>
+			</tr>
+
+			<tr class="text-center">
+				<td><%= link_to 'Edit', edit_project_path, class: "" %></td>
+			</tr>
+
+			<tr class="text-center">
+				<td><%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "" %></td>
+			</tr>
+
+			<tr class="text-center">
+				<td><%= link_to 'Back', root_path, class: "" %></td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>

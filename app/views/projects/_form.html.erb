@@ -1,0 +1,47 @@
+<div class="container">
+
+<%= form_for @project do |f| %>
+	<% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> Fill this Credential First!</h2>
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<br>
+
+
+	<div class="field" >
+		<%= f.label :name %>
+		<%= f.text_field :name, placeholder: " Name", class: "form-control" %>
+	</div>
+	<br>
+
+	<div class="field" >
+		<%= f.label :documentation %>
+		<%= f.text_area :documentation, placeholder: "Documentation", class: "form-control" %>
+	</div>
+	<br>
+
+	<div class="field" >
+		<%= f.label :project_cost %>
+		<%= f.number_field :project_cost, placeholder: "", class: "form-control" %>
+	</div>
+	<br>
+
+	<div class="field" >
+		<%= f.label :time_tracking %>
+		<%= f.text_field :time_tracking, placeholder: "", class: "form-control" %>
+	</div>
+	<br>
+
+		<div class="container">
+		<%= f.submit class: "btn btn-outline-info" %>
+		</div>
+
+</div>
+
+<% end %>

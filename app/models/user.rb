@@ -8,5 +8,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :contact, presence: true
   validates :contact, numericality: { only_integer: true }
+
+  has_many :projects
   
 end
