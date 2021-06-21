@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  documentation: MyText
+  project_cost: 1
+  time_tracking: 1
+
+two:
+  name: MyString
+  documentation: MyText
+  project_cost: 1
+  time_tracking: 1
