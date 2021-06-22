@@ -1,7 +1,20 @@
 <br>
 <div class="container">
-	<table class="table table-responsive table-striped">
+
+		<% if current_user %>
+		<%= link_to 'Edit', edit_project_path, class: "btn btn-danger" %> |
+		<%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %> |
+		<% end %>
+		<%= link_to 'Back', root_path, class: "btn btn-info" %>
+
+	<table class="table table-responsive table-hover">
 		<tbody>
+
+			<tr>
+				<% if @project.image.attached? %>
+					<td><%= image_tag @project.image, style: "width: 200px; display: block" %></td>
+				<% end %>
+			</tr>
 
 			<tr>
 		  	<td><strong>Name:</strong></td>
@@ -9,12 +22,12 @@
 		  </tr>
 
 			<tr>
-				<td><strong>Documentation:</strong></td>
+				<td><strong>Description:</strong></td>
 				<td><%= @project.documentation %></td>
 			</tr>
 
 			<tr>
-				<td><strong>Project Cost:</strong></td>
+				<td><strong>Project Cost:</strInfoong></td>
 				<td><%= @project.project_cost%></td>
 			</tr>
 
@@ -23,24 +36,21 @@
 				<td><%= @project.time_tracking %></td>
 			</tr>
 
-			<tr>
-				<% if @project.image.attached? %>
-					<td><%= image_tag @project.image, style: "width: 200px; display: block" %></td>
-				<% end %>
-			</tr>
-
-			<tr class="text-center">
-				<td><%= link_to 'Edit', edit_project_path, class: "" %></td>
-			</tr>
-
-			<tr class="text-center">
-				<td><%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "" %></td>
-			</tr>
-
-			<tr class="text-center">
-				<td><%= link_to 'Back', root_path, class: "" %></td>
-			</tr>
-
 		</tbody>
 	</table>
+
+	<h1 class="text-center">_______________________________________________________</h1><br>
+		<% @project.comments.each do |comment| %>
+			<li>
+				<%= comment.user.name%><br>
+				<%= comment.content %>
+				<% if user_signed_in? & current_user %>
+				<%= link_to 'Delete', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button"%>
+				<% end %>
+			</li>
+		<% end %>
+		<br>
+
+	<%= render 'comments/form' %>
+
 </div>

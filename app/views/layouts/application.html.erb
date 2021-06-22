@@ -15,11 +15,12 @@
   <body>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <%= yield %>
-
+    <br>
+    <div class="text-center">
       <p class="Notice!"><%= notice %></p>
       <p class="Alert"><%= alert %></p>
+    </div>
+    <%= yield %>
 
   </body>
 </html>

@@ -4,11 +4,11 @@ class ProjectsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-		@projects = Project.all.order("created_at DESC")
+		@projects = Project.all.order("created_at ASC")
 	end
 
 	def show
-		
+		@comments = Comment.where(project_id: @project)
 	end
 
 	def new 

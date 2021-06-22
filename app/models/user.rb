@@ -4,11 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, uniqueness: true
-  validates :last_name, presence: true
-  validates :contact, presence: true
-  validates :contact, numericality: { only_integer: true }
+  validates :name, presence: true
+  validates :contact, presence: true, numericality: { only_integer: true }
 
   has_many :projects
-  
+  has_many :comments
+
 end

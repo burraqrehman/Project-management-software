@@ -1,36 +1,32 @@
 <br>
 <div class="container">
 
-	<%= link_to 'New Project', new_project_path, class: ""%>
-	
-	<table class="table table-responsive table-striped table-hover ">
+	<h1 class="text-center">Project Management Software!</h1>
+	<br>
+
+	<% if user_signed_in?%>
+	<%= link_to 'New Project', new_project_path, class: "btn btn-danger index" %>
+	<% end %>
+
+	<table class="table table-responsive table-hover">
+		<thead>
+			<tr>
+				<th scope="row">Name </th>
+				<th scope="row">Description</th>
+				<th scope="row">Project Cost </th>
+				<th scope="row">Time Tracking </th>
+				<th scope="row"> </th>
+			</tr>
+		</thead>
 		<tbody>
 			<% @projects.each do |project| %>
-
 			  <tr>
-			  	<th scope="row">Name </th>
 		      <td><%= project.name %></td>
-		    </tr>
-
-		    <tr>
-		      <th scope="row">Documentation</th>
 		      <td><%= project.documentation %></td>
-		    </tr>
-
-		    <tr>
-		      <th scope="row">Project Cost </th>
 		      <td><%= project.project_cost %></td>
-		    </tr>
-
-		    <tr>
-		      <th scope="row">Time Tracking </th>
 		      <td><%= project.time_tracking %></td>
+					<td><%= link_to 'Show Project', project_path(project), class: "btn btn-warning"%></td>
 		    </tr>
-
-		    <tr class="text-center">
-				<td><%= link_to 'Show Project', project_path(project), class: ""%></td>
-				</tr>
-						
 			<% end %>
 		</tbody>
 	</table>
