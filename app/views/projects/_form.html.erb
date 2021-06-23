@@ -16,25 +16,25 @@
 
 	<div class="field" >
 		<%= f.label :name %>
-		<%= f.text_field :name, placeholder: " Name", class: "form-control" %>
+		<%= f.text_field :name, placeholder: " Name", class: "form-control", require: true %>
 	</div>
 	<br>
 
 	<div class="field" >
 		<%= f.label :description %>
-		<%= f.text_area :documentation, placeholder: "Description", class: "form-control" %>
+		<%= f.text_area :documentation, placeholder: "Description", class: "form-control", require: true %>
 	</div>
 	<br>
 
 	<div class="field" >
 		<%= f.label :project_cost %>
-		<%= f.number_field :project_cost, placeholder: "9999$", class: "form-control" %>
+		<%= f.number_field :project_cost, placeholder: "9999$", class: "form-control", require: true %>
 	</div>
 	<br>
 
 	<div class="field" >
 		<%= f.label :time_tracking %>
-		<%= f.text_field :time_tracking, placeholder: "", class: "form-control" %>
+		<%= f.text_field :time_tracking, placeholder: "", class: "form-control", require: true %>
 	</div>
 	<br>
 

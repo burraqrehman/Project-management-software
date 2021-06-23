@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@comments = Comment.where(project_id: @project)
+		
 	end
 
 	def new 

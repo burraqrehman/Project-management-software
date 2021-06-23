@@ -4,11 +4,14 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = @project.comments.new(comment_params)
-
-		if @comment.save
-			redirect_to project_path(@project)
-		else
-			render 'new'
+		respond_to do |format|
+			format.js
+			if @comment.save
+				format.html { redirect_to project_path(@project) }
+				format.js { }
+			else
+				format.html { render 'new' }
+			end
 		end
 	end 
 

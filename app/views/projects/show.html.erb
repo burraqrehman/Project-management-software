@@ -39,18 +39,17 @@
 		</tbody>
 	</table>
 
-	<h1 class="text-center">_______________________________________________________</h1><br>
-		<% @project.comments.each do |comment| %>
-			<li>
-				<%= comment.user.name%><br>
-				<%= comment.content %>
-				<% if user_signed_in? & current_user %>
-				<%= link_to 'Delete', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button"%>
-				<% end %>
-			</li>
-		<% end %>
-		<br>
-
-	<%= render 'comments/form' %>
-
+	<div id = "comment-section">
+		<h1 class="text-center">_______________________________________________________</h1><br>
+			<% @project.comments.each do |comment| %>
+				<li>
+					<%= render 'comments/comment' %>
+					<% if user_signed_in? & current_user %>
+					<%= link_to 'Delete', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button"%>
+					<% end %>
+				</li>
+			<% end %>
+			<br>		
+		<%= render 'comments/form' %>
+	</div>
 </div>
