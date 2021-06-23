@@ -6,6 +6,7 @@
 
 	<% if user_signed_in?%>
 	<%= link_to 'New Project', new_project_path, class: "btn btn-danger index" %>
+	<%= link_to 'Users', users_path, class: "btn btn-info index" %>
 	<% end %>
 
 	<table class="table table-responsive table-hover">
@@ -31,3 +32,4 @@
 		</tbody>
 	</table>
 </div>
+ 

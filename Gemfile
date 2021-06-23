@@ -25,7 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.8'
 gem 'pg', '~> 1.2', '>= 1.2.3'
-gem 'jquery-rails', '~> 4.4'
+gem 'table_print', '~> 1.5', '>= 1.5.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
