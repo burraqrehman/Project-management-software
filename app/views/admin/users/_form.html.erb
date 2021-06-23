@@ -1,6 +1,6 @@
 <div class="container">
 
-<%= form_for @user do |f| %>
+<%= form_for [:admin, @user] do |f| %>
 	<% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> Fill this Credential First!</h2>
