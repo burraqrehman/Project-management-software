@@ -2,8 +2,8 @@
 <div class="container">
 
 		<% if current_user %>
-		<%= link_to 'Edit', edit_project_path, class: "btn btn-danger" %> |
-		<%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %> |
+		<%= link_to 'Edit', edit_project_path, class: "btn btn-danger" %>
+		<%= link_to 'Delete', @project, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %> 
 		<% end %>
 		<%= link_to 'Back', root_path, class: "btn btn-info" %>
 
@@ -39,17 +39,13 @@
 		</tbody>
 	</table>
 
-	<div id = "comment-section">
+	<div id = "comment-content">
 		<h1 class="text-center">_______________________________________________________</h1><br>
+
 			<% @project.comments.each do |comment| %>
-				<li>
-					<%= render 'comments/comment' %>
-					<% if user_signed_in? & current_user %>
-					<%= link_to 'Delete', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button"%>
-					<% end %>
-				</li>
+					<%= render 'comments/comment', comment: comment %>
 			<% end %>
-			<br>		
+
 		<%= render 'comments/form' %>
 	</div>
 </div>

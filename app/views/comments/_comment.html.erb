@@ -1,4 +1,11 @@
 <div class="container">
-	<%= @comment.user.name%>
-	<%= @comment.content%>
+
+		<li>
+			<%= comment.user.name%> ||
+			<%= comment.content%>
+			<% if user_signed_in? & current_user %>
+				<%= link_to 'Delete', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button"%>
+		</li>
+
+	<% end %>
 </div>

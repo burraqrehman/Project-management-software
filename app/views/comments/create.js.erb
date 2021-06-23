@@ -1,1 +1,2 @@
-$('#comment-section').append("<%= render partial: 'comments/comment', local: { comment: @comment} %>")
+$('#comment-content').append("<%= j render 'comments/comment', comment: @comment %>")
+$('textarea').val('')
