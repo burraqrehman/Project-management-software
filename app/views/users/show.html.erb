@@ -22,7 +22,7 @@
 				<% if @user.present? && current_user %>
 				<%= link_to 'Edit', edit_user_registration_path, class: "btn btn-danger" %>
 				<% end %>
-				<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %> 
+				<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure to delete this User?' }, class: "btn btn-warning" %> 
 				<%= link_to 'Back', users_path, class: "btn btn-info" %>
 			</tr>
 		</tbody>

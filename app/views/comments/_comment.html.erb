@@ -1,10 +1,10 @@
 <div class="container">
 
   <li>
-    <%= comment.user.name%> ||
-    <%= comment.content%>
+    <%= comment.user.name %> ||
+    <%= comment.content %>
     <% if user_signed_in? & current_user %>
-      <%= link_to 'Delete', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button"%>
+      <%= link_to 'Delete', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button" %>
     <% end %>
   </li>
 
