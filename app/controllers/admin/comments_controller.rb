@@ -5,6 +5,7 @@ module Admin
 
     def create
       @comment = @project.comments.new(comment_params)
+
       respond_to do |format|
         if @comment.save
           format.html { redirect_to project_path[:admin, @project] }
@@ -18,20 +19,21 @@ module Admin
 
     def destroy
       @comment = Comment.find(params[:id])
-        @project = Project.find(params[:project_id])
-          @comment.destroy
-      redirect_to [:admin, @project]
+      @project = Project.find(params[:project_id])
+
+      if @comment.destroy
+        redirect_to [:admin, @project]
+      end
     end
 
     private
 
     def set_project
-      @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
     end
 
     def comment_params
       permitted_params = params.require(:comment).permit(:content)
-
       permitted_params[:user_id] = current_user.id
 
       permitted_params
