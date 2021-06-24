@@ -2,6 +2,8 @@
 
   <h1>Clients</h1>
 
+  <%= link_to 'New Client', new_client_path, class: "btn btn-danger" %>
+
   <table class="table table-responsive table-hover table-strips">
     <thead>
       <tr>
@@ -27,9 +29,4 @@
       <% end %>
     </tbody>
   </table>
-
-  <br>
-
-  <%= link_to 'New Client', new_client_path, class: "btn btn-danger" %>
-
 </div>

@@ -5,9 +5,7 @@
 	<br>
 
 	<% if user_signed_in?%>
-	<%= link_to 'New Project', new_admin_project_path, class: "btn btn-danger index" %>
-	<%= link_to 'Users', admin_users_path, class: "btn btn-info index" %>
-	<%= link_to 'Client', clients_path, class: "btn btn-success index" %>
+		<%= link_to 'New Project', new_admin_project_path, class: "btn btn-danger index" %>
 	<% end %>
 
 	<table class="table table-responsive table-hover">

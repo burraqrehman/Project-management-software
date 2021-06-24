@@ -1,6 +1,10 @@
 <br>
 <div class="container">
 
+    <% if user_signed_in? %>
+        <%= link_to 'New User', new_admin_user_path, class: "btn btn-danger" %>
+    <% end %>
+
     <table class="table table-responsive table-hover">
         <thead>
             <tr>

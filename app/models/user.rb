@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :contact, presence: true, numericality: { only_integer: true }
+  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
   has_many :projects
   has_many :comments
