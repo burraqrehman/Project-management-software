@@ -18,7 +18,7 @@ module Manager
       @project = current_user.projects.build(project_params)
 
       if @project.save
-        redirect_to [:admin, @project], notice: "Project was successfully created."
+        redirect_to [:manager, @project], notice: "Project was successfully created."
       else
         render 'new'
       end
@@ -28,7 +28,7 @@ module Manager
 
     def update
       if @project.update(project_params)
-        redirect_to [:admin, @project], notice: "Project was successfully created."
+        redirect_to [:manager, @project], notice: "Project was successfully created."
       else
         render 'edit'
       end

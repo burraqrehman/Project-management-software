@@ -19,7 +19,7 @@ module Manager
       @client = current_user.clients.build(client_params)
 
       if @client.save
-        redirect_to @client, notice: "Client was successfully created."
+        redirect_to [:manager, @client], notice: "Client was successfully created."
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Manager
 
     def update
       if @client.update(client_params)
-        redirect_to @client, notice: "Client was successfully update"
+        redirect_to [:manager, @client], notice: "Client was successfully update"
       else
         render :edit
       end

@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_for(@client) do |f| %>
+  <%= form_for [:manager, @client] do |f| %>
 
     <% if @client.errors.any? %>
       <div id="error_explanation">

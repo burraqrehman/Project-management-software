@@ -8,7 +8,7 @@ module Manager
 
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to project_path[:admin, @project] }
+          format.html { redirect_to project_path[:manager, @project] }
           format.js 
         else
           format.html { render 'new' }
@@ -22,7 +22,7 @@ module Manager
       @project = Project.find(params[:project_id])
 
       if @comment.destroy
-        redirect_to [:admin, @project]
+        redirect_to [:manager, @project]
       end
     end
 

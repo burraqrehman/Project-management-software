@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  root "admin/projects#index"
+  root "manager/projects#index"
 
 end

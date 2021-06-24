@@ -2,8 +2,8 @@
 <div class="container">
 
 		<% if current_user %>
-		<%= link_to 'Edit', edit_admin_project_path, class: "btn btn-danger" %>
-		<%= link_to 'Delete', [:admin, @project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-warning" %> 
+		<%= link_to 'Edit', edit_manager_project_path, class: "btn btn-danger" %>
+		<%= link_to 'Delete', [:manager, @project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-warning" %> 
 		<% end %>
 		<%= link_to 'Back', root_path, class: "btn btn-info" %>
 
@@ -43,9 +43,9 @@
 		<hr>
 		
 			<% @project.comments.each do |comment| %>
-					<%= render 'admin/comments/comment', comment: comment %>
+					<%= render 'manager/comments/comment', comment: comment %>
 			<% end %>
 
-		<%= render 'admin/comments/form' %>
+		<%= render 'manager/comments/form' %>
 	</div>
 </div> 
