@@ -4,14 +4,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-     resources :projects do 
+  resources :projects do 
       resources :comments
     end
-  end
+  end 
 
-  resources :projects do 
-    resources :comments
-  end
-  
   root "projects#index"
 end

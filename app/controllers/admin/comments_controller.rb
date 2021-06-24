@@ -1,5 +1,5 @@
 module Admin
-  class CommentsController < ApplicationController
+  class CommentsController < BaseController
     before_action :authenticate_user!
     before_action :set_project
 
@@ -7,7 +7,7 @@ module Admin
       @comment = @project.comments.new(comment_params)
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to project_path(@project) }
+          format.html { redirect_to project_path[:admin, @project] }
           format.js 
         else
           format.html { render 'new' }
@@ -20,7 +20,7 @@ module Admin
       @comment = Comment.find(params[:id])
         @project = Project.find(params[:project_id])
           @comment.destroy
-      redirect_to @project
+      redirect_to [:admin, @project]
     end
 
     private

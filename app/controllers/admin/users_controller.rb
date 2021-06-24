@@ -18,7 +18,7 @@ module Admin
 			@user = User.new(user_params)
 
 			if @user.save
-				redirect_to @user
+				redirect_to [:admin, @user]
 			else
 				render 'new'
 			end
@@ -30,7 +30,7 @@ module Admin
 
 		def update 
 			if @user.update(user_params)
-				redirect_to @user
+				redirect_to [:admin, @user]
 			else
 				render 'edit'
 			end

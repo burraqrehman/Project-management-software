@@ -1,5 +1,5 @@
 module Admin
-	class ProjectsController < ApplicationController
+	class ProjectsController < BaseController
 
 		before_action :set_project, only: [:show, :edit, :update, :destroy]
 		before_action :authenticate_user!, except: [:index, :show]
@@ -20,7 +20,7 @@ module Admin
 			@project = current_user.projects.build(project_params)
 
 			if @project.save
-				redirect_to @project
+				redirect_to [:admin, @project]
 			else
 				render 'new'
 			end
@@ -32,7 +32,7 @@ module Admin
 
 		def update
 			if @project.update(project_params)
-				redirect_to @project
+				redirect_to [:admin, @project]
 			else
 				render 'edit'
 			end
