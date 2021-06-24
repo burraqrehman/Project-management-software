@@ -1,8 +1,8 @@
 module Admin
 	class ProjectsController < BaseController
 
-		before_action :set_project, only: [:show, :edit, :update, :destroy]
-		before_action :authenticate_user!, except: [:index, :show]
+		before_action :set_project, only: %i[show edit update destroy]
+		before_action :authenticate_user!, except: %i[index show]
 
 		def index
 			@projects = Project.all.order("created_at ASC")
@@ -20,7 +20,7 @@ module Admin
 			@project = current_user.projects.build(project_params)
 
 			if @project.save
-				redirect_to [:admin, @project]
+				redirect_to [:admin, @project], notice: "Project was successfully created."
 			else
 				render 'new'
 			end
@@ -32,7 +32,7 @@ module Admin
 
 		def update
 			if @project.update(project_params)
-				redirect_to [:admin, @project]
+				redirect_to [:admin, @project], notice: "Project was successfully created."
 			else
 				render 'edit'
 			end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
 
   namespace :admin do
@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     end
   end 
 
-  root "projects#index"
+  root "admin/projects#index"
+  
+  resources :clients
+
 end
