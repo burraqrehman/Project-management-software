@@ -1,15 +1,15 @@
 <div class="container">
 
-<%= form_for [:admin, @project] do |f| %>
-	<% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> Fill this Credential First!</h2>
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+	<%= form_for [:admin, @project] do |f| %>
+		<% if @project.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@project.errors.count, "error") %> Fill this Credential First!</h2>
+	      <ul>
+	      <% @project.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
   <% end %>
 	<br>
 
@@ -39,7 +39,7 @@
 
 	<div class="field" >
 		<% if @project.image.attached? %>
-			<%= image_tag @project.image, style: "width: 200px; display: block" %>
+			<%= image_tag @project.image, style: "width: 200px; display: block", required: true  %>
 		<% end %>
 
 		<%= f.label :image %>
@@ -47,10 +47,9 @@
 	</div>
 	<br>
 
-		<div class="container">
+	<div class="container">
 		<%= f.submit class: "btn btn-outline-info" %>
-		</div>
-
+	</div>
 </div>
 
 <% end %>

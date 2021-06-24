@@ -1,22 +1,22 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true
+  validates :name, :enum, presence: true
   validates :contact, presence: true, numericality: { only_integer: true }
-  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-  validates :enum, presence: true
+  validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, on: :create }
 
   has_many :projects
   has_many :comments
 
-  enum roles: {
+  ROLES= {
     admin: 'admin',
     manager: 'manager',
     member: 'member'
   }
 
+  enum roles: ROLES
 end
