@@ -1,4 +1,4 @@
-module Admin
+module Manager
   class ProjectsController < BaseController
 
     before_action :authenticate_user!, except: %i[index show]
@@ -8,7 +8,7 @@ module Admin
       @projects = Project.all.order("created_at ASC")
     end
    
-    def show; end
+    def show; end  
 
     def new 
       @project = current_user.projects.build

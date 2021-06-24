@@ -1,5 +1,5 @@
 module Admin
-  class UsersController < BaseController
+  class UsersController < ApplicationController
     before_action :set_user, only: %i[show edit update destroy]
 
     def index
@@ -16,7 +16,7 @@ module Admin
       @user = User.new(user_params)
 
       if @user.save
-        redirect_to [:admin, @user], notice: "User was successfully created."
+        redirect_to [:manager, @user], notice: "User was successfully created."
       else
         render 'new'
       end
@@ -26,7 +26,7 @@ module Admin
 
     def update 
       if @user.update(user_params)
-        redirect_to [:admin, @user], notice: "User was successfully created."
+        redirect_to [:manager, @user], notice: "User was successfully created."
       else
         render 'edit'
       end
