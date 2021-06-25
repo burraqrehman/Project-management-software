@@ -1,0 +1,29 @@
+<br>
+<div class="container">
+
+    <% if user_signed_in? %>
+        <%= link_to 'New User', new_admin_user_path, class: "btn btn-danger" %>
+    <% end %>
+
+    <table class="table table-responsive table-hover">
+        <thead>
+            <tr>
+                <th scope="row"> Name </th>
+                <th scope="row"> Email </th>
+                <th scope="row"> Contact </th>
+                <th scope="row"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>
+              <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.contact %></td>
+              <td><%= link_to 'Show User', admin_user_path(user), class: "btn btn-warning" %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+ 

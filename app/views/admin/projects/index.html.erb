@@ -5,7 +5,7 @@
 	<br>
 
 	<% if user_signed_in?%>
-	<%= link_to 'New Project', new_project_path, class: "btn btn-danger index" %>
+		<%= link_to 'New Project', new_admin_project_path, class: "btn btn-danger index" %>
 	<% end %>
 
 	<table class="table table-responsive table-hover">
@@ -25,9 +25,10 @@
 		      <td><%= project.documentation %></td>
 		      <td><%= project.project_cost %></td>
 		      <td><%= project.time_tracking %></td>
-					<td><%= link_to 'Show Project', project_path(project), class: "btn btn-warning"%></td>
+					<td><%= link_to 'Show Project', admin_project_path(project), class: "btn btn-warning" %></td>
 		    </tr>
 			<% end %>
 		</tbody>
 	</table>
 </div>
+ 

@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
 
-  resources :projects do 
-    resources :comments
-  end
+  namespace :admin do
+    resources :users
+    resources :projects do 
+      resources :comments
+    end
+  end 
+
+  root "admin/projects#index"
   
-  
-  root "projects#index"
-  
+  resources :clients
+
 end

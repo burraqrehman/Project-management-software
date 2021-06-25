@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 class="text-center"><%= @client.name %></h1><br>
+
+  <table class="table table-responsive table-hover">
+    <tbody>
+
+      <tr>
+        <td><strong>Contact:</strong></td>
+        <td><%= @client.contact %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Email:</strong></td>
+        <td><%= @client.email %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Address:</strong></td>
+        <td><%= @client.address %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Profession:</strong></td>
+        <td><%= @client.profession %></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <%= link_to 'Back', clients_path, class: "btn btn-info" %>
+  <%= link_to 'Edit', edit_client_path(@client), class: "btn btn-warning" %> 
+  <%= link_to 'Destroy', @client, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+
+</div>

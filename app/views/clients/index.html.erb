@@ -1,0 +1,32 @@
+<div class="container">
+
+  <h1>Clients</h1>
+
+  <%= link_to 'New Client', new_client_path, class: "btn btn-danger" %>
+
+  <table class="table table-responsive table-hover table-strips">
+    <thead>
+      <tr>
+        <th scope="row">Name</th>
+        <th scope="row">Contact</th>
+        <th scope="row">Email</th>
+        <th scope="row">Address</th>
+        <th scope="row">Profession</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= client.name %></td>
+          <td><%= client.contact %></td>
+          <td><%= client.email %></td>
+          <td><%= client.address %></td>
+          <td><%= client.profession %></td>
+          <td><%= link_to 'Show', client, class: "btn btn-warning" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
