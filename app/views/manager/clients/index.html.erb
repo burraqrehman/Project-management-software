@@ -4,6 +4,7 @@
 
   <%= link_to 'New Client', new_manager_client_path, class: "btn btn-danger" %>
 
+
   <table class="table table-responsive table-hover table-strips">
     <thead>
       <tr>
@@ -24,7 +25,9 @@
           <td><%= client.email %></td>
           <td><%= client.address %></td>
           <td><%= client.profession %></td>
-          <td><%= link_to 'Show', [:admin, client], class: "btn btn-warning" %></td>
+          <td><%= link_to 'Show', [:manager, client], class: "btn btn-warning" %></td>
+          <td><%= link_to 'Show Project', manager_client_projects_path(client), class: "btn btn-warning" %></td>
+          <td><%= link_to 'New Project', new_manager_client_project_path(client), class: "btn btn-warning" %></td>
         </tr>
       <% end %>
     </tbody>

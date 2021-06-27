@@ -1,7 +1,7 @@
 module Manager  
   class ClientsController < BaseController
-    before_action :authenticate_user!
-    before_action :set_client, only: %i[ show edit update destroy ]
+    #before_action :authenticate_user!
+    before_action :set_client, only: %i[show edit update destroy]
 
     def index
       @clients = Client.all
@@ -10,13 +10,13 @@ module Manager
     def show; end
 
     def new
-      @client = current_user.clients.build
+      @client = Client.new
     end
 
     def edit; end
 
     def create
-      @client = current_user.clients.build(client_params)
+      @client = Client.new(client_params)
 
       if @client.save
         redirect_to [:manager, @client], notice: "Client was successfully created."
@@ -35,7 +35,7 @@ module Manager
 
     def destroy
       @client.destroy
-      redirect_to @clients
+      redirect_to [:manager, @client]
     end
 
     private

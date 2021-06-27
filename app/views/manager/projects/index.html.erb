@@ -4,9 +4,7 @@
 	<h1 class="text-center">Project Management Software!</h1>
 	<br>
 
-	<% if user_signed_in?%>
-		<%= link_to 'New Project', new_manager_project_path, class: "btn btn-danger index" %>
-	<% end %>
+	<%= link_to 'New Project', new_manager_client_project_path(@projects), class: "btn btn-danger index" %>
 
 	<table class="table table-responsive table-hover">
 		<thead>
@@ -25,7 +23,7 @@
 		      <td><%= project.documentation %></td>
 		      <td><%= project.project_cost %></td>
 		      <td><%= project.time_tracking %></td>
-					<td><%= link_to 'Show Project', manager_project_path(project), class: "btn btn-warning" %></td>
+					<td><%= link_to 'Show Project', manager_client_project_path(project, @client), class: "btn btn-warning" %></td>
 		    </tr>
 			<% end %>
 		</tbody>

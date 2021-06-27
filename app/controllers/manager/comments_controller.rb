@@ -1,14 +1,17 @@
 module Manager
   class CommentsController < BaseController
-    before_action :authenticate_user!
+    before_action :set_client
     before_action :set_project
+
+
+    def new; new
 
     def create
       @comment = @project.comments.new(comment_params)
 
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to project_path[:manager, @project] }
+          format.html { redirect_to project_path[:manager, @client, @project] }
           format.js 
         else
           format.html { render 'new' }
@@ -22,21 +25,25 @@ module Manager
       @project = Project.find(params[:project_id])
 
       if @comment.destroy
-        redirect_to [:manager, @project]
+        redirect_to [:manager, @client, @project]
       end
     end
 
     private
 
+    def set_client
+      @client = Client.find(params[:client_id]
+    end
+
     def set_project
-    @project = Project.find(params[:project_id])
+      @project = client.project.find(params[:project_id])
     end
 
     def comment_params
-      permitted_params = params.require(:comment).permit(:content)
-      permitted_params[:user_id] = current_user.id
+      permitted_params = params.require(:comment).permit(:content) 
+      permitted_params[:client_id] = client.id
 
       permitted_params
     end
-  end
+  end 
 end

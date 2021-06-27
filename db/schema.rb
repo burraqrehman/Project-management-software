@@ -49,11 +49,9 @@ ActiveRecord::Schema.define(version: 2021_06_24_101633) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "project_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_comments_on_project_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -63,7 +61,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_101633) do
     t.integer "time_tracking"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.integer "client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,5 +82,4 @@ ActiveRecord::Schema.define(version: 2021_06_24_101633) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "projects"
-  add_foreign_key "comments", "users"
 end

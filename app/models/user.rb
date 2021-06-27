@@ -5,12 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, :enum, presence: true
+  validates :name, presence: true
   validates :contact, presence: true, numericality: { only_integer: true }
   validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, on: :create }
 
-  has_many :projects
-  has_many :comments
 
   ROLES= {
     admin: 'admin',

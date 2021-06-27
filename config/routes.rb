@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :manager do
-    resources :clients
-    resources :projects do 
-      resources :comments
+    resources :clients do 
+      resources :projects do 
+        resources :comments
+      end
     end
   end 
 
@@ -13,6 +14,6 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  root "manager/projects#index"
+  root "manager/clients#index"
 
 end
