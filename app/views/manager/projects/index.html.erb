@@ -4,7 +4,7 @@
 	<h1 class="text-center">Project Management Software!</h1>
 	<br>
 
-	<%= link_to 'New Project', new_manager_client_project_path(@projects), class: "btn btn-danger index" %>
+	<%= link_to 'New Project', new_manager_client_project_path(@client, @projects), class: "btn btn-secondary index" %>
 
 	<table class="table table-responsive table-hover">
 		<thead>
@@ -23,7 +23,12 @@
 		      <td><%= project.documentation %></td>
 		      <td><%= project.project_cost %></td>
 		      <td><%= project.time_tracking %></td>
-					<td><%= link_to 'Show Project', manager_client_project_path(project, @client), class: "btn btn-warning" %></td>
+		      <% if @client.projects.present? %>
+			      <td><%= link_to 'Edit', edit_manager_client_project_path(@client, project), class: "btn btn-dark" %></td>
+						<td><%= link_to 'Delete', [:manager, @client, project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-danger" %></td>
+						<td><%= link_to 'Show Project', manager_client_project_path(@client, project), class: "btn btn-info" %></td>
+					<% end %>
+					<td><%= link_to 'Back', manager_clients_path(@client, project), class: "btn btn-success" %></td>
 		    </tr>
 			<% end %>
 		</tbody>

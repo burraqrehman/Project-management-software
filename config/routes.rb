@@ -11,8 +11,14 @@ Rails.application.routes.draw do
   end 
 
   namespace :admin do
-    resources :users
+    resources :users do
+      member do 
+        get :activate
+        get :deactivate
+      end
+    end
   end
+
 
   root "manager/clients#index"
 

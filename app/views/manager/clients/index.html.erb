@@ -25,9 +25,9 @@
           <td><%= client.email %></td>
           <td><%= client.address %></td>
           <td><%= client.profession %></td>
-          <td><%= link_to 'Show', [:manager, client], class: "btn btn-warning" %></td>
-          <td><%= link_to 'Show Project', manager_client_projects_path(client), class: "btn btn-warning" %></td>
-          <td><%= link_to 'New Project', new_manager_client_project_path(client), class: "btn btn-warning" %></td>
+          <td><%= link_to 'Show Client', [:manager, client], class: "btn btn-dark" %></td>
+          <td><%= link_to 'Projects', manager_client_projects_path(client, @project), class: "btn btn-secondary" %></td>
+          <!-- <td><%= link_to 'New Project', new_manager_client_project_path(client), class: "btn btn-dark" %></td> -->
         </tr>
       <% end %>
     </tbody>

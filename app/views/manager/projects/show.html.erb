@@ -1,11 +1,7 @@
 <br>
 <div class="container">
-
-		<% if current_user %>
-		<%= link_to 'Edit', edit_manager_client_project_path(@client, @project), class: "btn btn-danger" %>
-		<%= link_to 'Delete', [:manager, @client, @project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-warning" %> 
-		<% end %>
-		<%= link_to 'Back', root_path, class: "btn btn-info" %>
+ 
+		<%= link_to 'Back', manager_client_projects_path(@client, @project), class: "btn btn-info" %>
 
 	<table class="table table-responsive table-hover">
 		<tbody>

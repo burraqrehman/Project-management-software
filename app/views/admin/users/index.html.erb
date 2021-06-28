@@ -21,6 +21,13 @@
               <td><%= user.email %></td>
               <td><%= user.contact %></td>
               <td><%= link_to 'Show User', admin_user_path(user), class: "btn btn-warning" %></td>
+
+              <% if user.admin == true %>
+                 <td><%= link_to 'Deactive', activate_admin_user_path(user), class: 'btn btn-info' %></td>
+              <% else %>
+                <td><%= link_to 'Active', activate_admin_user_path(user), class: 'btn btn-info' %></td>
+              <% end %>
+
             </tr>
             <% end %>
         </tbody>
