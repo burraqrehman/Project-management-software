@@ -23,7 +23,10 @@ module Manager
       @comment = Comment.find(params[:id])
 
       if @comment.destroy
+        flash[:notice] = "This Comment destroyed successfully"
         redirect_to [:manager, @client, @project]
+      else
+         flash[:notice] = "This Comment could not be destroyed"
       end
     end
 

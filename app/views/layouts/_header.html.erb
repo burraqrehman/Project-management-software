@@ -15,9 +15,11 @@
               <a class="nav-link active" aria-current="page" href="<%= admin_users_path %>">User</a>
           </li> 
         <% end %>
+        <% if user_signed_in? && current_user.admin? %>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="<%= manager_clients_path %>">Client</a>
         </li>
+        <% end %>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>

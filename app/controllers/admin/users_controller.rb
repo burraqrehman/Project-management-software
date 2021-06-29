@@ -18,7 +18,7 @@ module Admin
       if @user.save
         redirect_to [:admin, @user], notice: "User was successfully created."
       else
-        render 'new'
+        render :new
       end
     end
 
@@ -28,13 +28,17 @@ module Admin
       if @user.update(user_params)
         redirect_to [:admin, @user], notice: "User was successfully created."
       else
-        render 'edit'
+        render :edit
       end
     end
 
     def destroy 
-      @user.destroy
-      redirect_to root_path
+      if @user.destroy
+        flash[:notice] = "This user destroyed successfully"
+        redirect_to root_path
+      else
+        flash[:notice] = "This user could not be destroyed"
+      end
     end
 
     def disable
