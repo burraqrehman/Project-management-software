@@ -18,7 +18,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.datetime :remember_created_at
 
       ## admin?
-      t.boolean :admin
+      t.boolean :active, null: false, default: "true"
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

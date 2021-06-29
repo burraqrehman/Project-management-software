@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :contact, presence: true, numericality: { only_integer: true }
-  validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, on: :create }
+  validates :email, presence: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, on: :create }, uniqueness: { case_sensitive: false }
 
 
   ROLES= {
@@ -17,5 +17,21 @@ class User < ApplicationRecord
   }
 
   enum roles: ROLES
-  
+
+  # def toggle_status!
+  #   if active?
+  #     disable!
+  #   else
+  #     enable!
+  #   end
+  # end
+
+  # def disable!
+  #   update(active: false)
+  # end
+
+  # def enable!
+  #   update(active: true)
+  # end
+
 end

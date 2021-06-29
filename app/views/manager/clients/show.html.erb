@@ -28,7 +28,9 @@
   </table>
 
   <%= link_to 'Back', manager_clients_path, class: "btn btn-info" %>
-  <%= link_to 'Edit', edit_manager_client_path(@client), class: "btn btn-warning" %> 
-  <%= link_to 'Destroy', [:manager, @client], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  <% if user_signed_in? && current_user %>
+    <%= link_to 'Edit', edit_manager_client_path(@client), class: "btn btn-warning" %> 
+    <%= link_to 'Destroy', [:manager, @client], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  <% end %>
   
 </div>

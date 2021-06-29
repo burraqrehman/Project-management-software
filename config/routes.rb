@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users do
       member do 
-        get :activate
-        get :deactivate
+        get :enable
+        get :disable
       end
     end
   end

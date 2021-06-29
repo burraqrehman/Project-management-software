@@ -1,6 +1,6 @@
 module Admin
   class UsersController < BaseController
-    before_action :set_user, only: %i[show edit update destroy activate]
+    before_action :set_user, only: %i[show edit update destroy enable disable]
 
     def index
       @users = User.all
@@ -37,13 +37,17 @@ module Admin
       redirect_to root_path
     end
 
-    def activate
-      if (@user.admin == true)
-        @user.update_attribute(:admin, false)
-        redirect_to admin_users_path
-      else
-        @user.update_attribute(:admin, true)
-        redirect_to admin_users_path
+    def enable
+      if @user.active?
+        @user.update(active: false)
+        redirect_to admin_users_path 
+      end
+    end
+
+    def disable
+      if @user.active?
+        @user.update(active: true)
+        redirect_to admin_users_path 
       end
     end
 
@@ -54,7 +58,7 @@ module Admin
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :contact)
+      params.require(:user).permit(:name, :email, :contact, :password, :password_confirmation)
     end
   end
 end
