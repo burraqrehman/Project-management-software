@@ -1,35 +1,37 @@
 <br>
 <div class="container">
 
-	<h1 class="text-center">Project Management Software!</h1>
-	<br>
+  <h1 class="text-center">Project Management Software!</h1>
+  <br>
 
-	<% if user_signed_in? && current_user %>
-	<%= link_to 'New Project', new_manager_client_project_path(@client, @projects), class: "btn btn-secondary index" %>
-	<% end %>
+  <% if user_signed_in? && current_user %>
+  <%= link_to 'New Project', new_manager_client_project_path(@client, @projects), class: "btn btn-secondary index" %>
+  <% end %>
 
-	<table class="table table-responsive table-hover">
-		<thead>
-			<tr>
-				<th scope="row">Name </th>
-				<th scope="row">Description</th>
-				<th scope="row"> </th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @projects.each do |project| %>
-			  <tr>
-		      <td><%= project.name %></td>
-		      <td><%= project.documentation %></td>
-		      <% if @client.projects.present? && user_signed_in? && current_user %>
-			      <td><%= link_to 'Edit', edit_manager_client_project_path(@client, project), class: "btn btn-dark" %></td>
-						<td><%= link_to 'Delete', [:manager, @client, project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-danger" %></td>
-					<% end %>
-					<td><%= link_to 'Show Project', manager_client_project_path(@client, project), class: "btn btn-info" %></td>
-					<td><%= link_to 'Back', manager_clients_path(@client, project), class: "btn btn-success" %></td>
-		    </tr>
-			<% end %>
-		</tbody>
-	</table>
+  <table class="table table-responsive table-hover">
+    <thead>
+      <tr>
+        <th scope="row">Name </th>
+        <th scope="row">Description</th>
+        <th scope="row"> </th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.documentation %></td>
+        <% if @client.projects.present? && user_signed_in? && current_user %>
+          <td><%= link_to 'Edit', edit_manager_client_project_path(@client, project), class: "btn btn-dark" %></td>
+          <td><%= link_to 'Delete', [:manager, @client, project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-danger" %></td>
+        <% end %>
+        <td><%= link_to 'Show Project', manager_client_project_path(@client, project), class: "btn btn-info" %></td>
+        <td><%= link_to 'Back', manager_clients_path(@client, project), class: "btn btn-success" %></td>
+      </tr>
+
+      <% end %>
+    </tbody>
+  </table>
 </div>
  
