@@ -1,6 +1,6 @@
 module Admin
   class UsersController < BaseController
-    before_action :set_user, only: %i[show edit update destroy enable disable]
+    before_action :set_user, only: %i[show edit update destroy disable]
 
     def index
       @users = User.all
@@ -37,19 +37,24 @@ module Admin
       redirect_to root_path
     end
 
-    def enable
+    def disable
       if @user.active?
         @user.update(active: false)
         redirect_to admin_users_path 
-      end
-    end
-
-    def disable
-      if @user.active?
+      else
         @user.update(active: true)
         redirect_to admin_users_path 
       end
     end
+
+    # def disable
+    #   if @user.active?
+    #     return redirect_to admin_users_path if @user.update(active: true)
+
+    #   end
+
+    #   redirect_to admin_users_path
+    # end
 
     private 
 

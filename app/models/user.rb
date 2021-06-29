@@ -34,4 +34,8 @@ class User < ApplicationRecord
   #   update(active: true)
   # end
 
+  def active_for_authentication?
+    super and self.active?
+  end
+
 end
