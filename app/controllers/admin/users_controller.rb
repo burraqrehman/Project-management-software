@@ -13,6 +13,7 @@ module Admin
     end
 
     def create 
+      byebug
       @user = User.new(user_params)
 
       if @user.save
@@ -35,7 +36,7 @@ module Admin
     def destroy 
       if @user.destroy
         flash[:notice] = "This user destroyed successfully"
-        redirect_to root_path
+        redirect_to admin_users_path
       else
         flash[:notice] = "This user could not be destroyed"
       end
@@ -51,15 +52,6 @@ module Admin
       end
     end
 
-    # def disable
-    #   if @user.active?
-    #     return redirect_to admin_users_path if @user.update(active: true)
-
-    #   end
-
-    #   redirect_to admin_users_path
-    # end
-
     private 
 
     def set_user
@@ -67,7 +59,7 @@ module Admin
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :contact, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :contact, :password, :password_confirmation, :roles)
     end
   end
 end

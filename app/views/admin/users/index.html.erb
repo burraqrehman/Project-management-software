@@ -3,7 +3,7 @@
   <h1 class="text-center">"All Users"</h1>
 
   <% if user_signed_in? %>
-      <%= link_to 'New User', new_admin_user_path, class: "btn btn-danger" %>
+      <%= link_to 'New User', new_admin_user_path, class: "btn btn-warning" %>
   <% end %>
 
   <table class="table table-responsive table-hover">
@@ -12,6 +12,7 @@
             <th scope="row"> Name </th>
             <th scope="row"> Email </th>
             <th scope="row"> Contact </th>
+            <th scope="row"> Status </th>
             <th scope="row="> </th>
         </tr>
     </thead>
@@ -21,11 +22,12 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.contact %></td>
-        <td><%= link_to 'Show User', admin_user_path(user), class: "btn btn-warning" %></td>
+        <td><%= user.roles %></td>
+        <td><%= link_to 'Show User', admin_user_path(user), class: "btn btn-dark btn-sm" %></td>
         <% if user.active? %>
-          <td><%= link_to 'Disable', disable_admin_user_path(user), class: 'btn btn-info' %></td>
+          <td><%= link_to 'Disable', disable_admin_user_path(user), class: 'btn btn-primary btn-sm' %></td>
         <% else %>
-          <td><%= link_to 'Enable', disable_admin_user_path(user), class: 'btn btn-info' %></td>
+          <td><%= link_to 'Enable', disable_admin_user_path(user), class: 'btn btn-info btn-sm' %></td>
         <% end %>
       </tr>
       <% end %>

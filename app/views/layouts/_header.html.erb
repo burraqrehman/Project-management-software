@@ -10,12 +10,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#"></a>
         </li>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.admin? %>
           <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="<%= admin_users_path %>">User</a>
           </li> 
         <% end %>
-        <% if user_signed_in? && current_user.admin? %>
+        <% if user_signed_in? && current_user.admin?  %>
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="<%= manager_clients_path %>">Client</a>
         </li>
@@ -27,10 +27,8 @@
     
       <div class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to current_user.email, edit_user_registration_path %></li> |||
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li class=""><%= link_to "Sign Up", new_user_registration_path %></li> |||
           <li><%= link_to "Log In", new_user_session_path %></li>
         <% end %>
       </div>

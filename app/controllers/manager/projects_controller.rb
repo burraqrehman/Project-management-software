@@ -35,11 +35,11 @@ module Manager
 
     def destroy
       if @project.destroy
-
         flash[:notice] = "This project destroyed successfully"
         redirect_to [:manager, @client, @project]
       else
         flash[:notice] = "This Project could not be destroyed"
+      end
     end
 
     private 
