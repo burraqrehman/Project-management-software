@@ -1,6 +1,6 @@
 <div class="container">
 
-	<%= form_for [:manager, @client, @client.projects.build] do |f| %>
+	<%= form_for [:manager, @client, @project] do |f| %>
 		<% if @project.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@project.errors.count, "error") %> Fill this Credential First!</h2>
@@ -48,7 +48,7 @@
 	<br>
 
 	<div class="container">
-		<%= f.submit class: "btn btn-outline-info" %>
+		<%= f.submit class: "btn btn-outline-info btn-sm" %>
 	</div>
 </div>
 

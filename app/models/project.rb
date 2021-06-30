@@ -3,6 +3,7 @@ class Project < ApplicationRecord
 	belongs_to :client
 
 	has_many :comments, dependent: :destroy
+	has_many :payments
 	
 	has_one_attached :image
 

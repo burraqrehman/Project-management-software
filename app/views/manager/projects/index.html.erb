@@ -4,8 +4,9 @@
   <h1 class="text-center">Project Management Software!</h1>
   <br>
 
+  <%= link_to 'Back', manager_clients_path(@client, @project), class: "btn btn-dark btn-sm" %>
   <% if user_signed_in? && current_user %>
-  <%= link_to 'New Project', new_manager_client_project_path(@client, @projects), class: "btn btn-secondary index" %>
+  <%= link_to 'New Project', new_manager_client_project_path(@client, @projects), class: "btn btn-success index btn-sm" %>
   <% end %>
 
   <table class="table table-responsive table-hover">
@@ -23,13 +24,11 @@
         <td><%= project.name %></td>
         <td><%= project.documentation %></td>
         <% if @client.projects.present? && user_signed_in? && current_user %>
-          <td><%= link_to 'Edit', edit_manager_client_project_path(@client, project), class: "btn btn-dark" %></td>
-          <td><%= link_to 'Delete', [:manager, @client, project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-danger" %></td>
+          <td><%= link_to 'Edit', edit_manager_client_project_path(@client, project), class: "btn btn-warning btn-sm" %></td>
+          <td><%= link_to 'Delete', [:manager, @client, project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-danger btn-sm" %></td>
         <% end %>
-        <td><%= link_to 'Show Project', manager_client_project_path(@client, project), class: "btn btn-info" %></td>
-        <td><%= link_to 'Back', manager_clients_path(@client, project), class: "btn btn-success" %></td>
+        <td><%= link_to 'Show Project', manager_client_project_path(@client, project), class: "btn btn-primary btn-sm" %></td>
       </tr>
-
       <% end %>
     </tbody>
   </table>

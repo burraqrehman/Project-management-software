@@ -3,7 +3,7 @@
   <h1>Clients</h1>
 
   <% if user_signed_in? && current_user %>
-    <%= link_to 'New Client', new_manager_client_path, class: "btn btn-danger" %>
+    <%= link_to 'New Client', new_manager_client_path, class: "btn btn-danger btn-sm" %>
   <% end %>
 
   <table class="table table-responsive table-hover table-strips">
@@ -20,8 +20,8 @@
         <tr>
           <td><%= client.name %></td>
           <td><%= client.profession %></td>
-          <td><%= link_to 'Show Client', [:manager, client], class: "btn btn-dark" %></td>
-          <td><%= link_to 'Projects', manager_client_projects_path(client, @project), class: "btn btn-secondary" %></td>
+          <td><%= link_to 'Show Client', [:manager, client], class: "btn btn-dark btn-sm" %></td>
+          <td><%= link_to 'Projects', manager_client_projects_path(client, @project), class: "btn btn-secondary btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>

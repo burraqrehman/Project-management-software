@@ -1,17 +1,17 @@
-module Manager
+ module Manager
   class ProjectsController < BaseController
     before_action :set_client
     before_action :set_project, only: %i[show edit update destroy]
     
     def index
-      @projects = Project.order("created_at ASC")
+      @projects = @client.projects.order("created_at ASC")
     end
    
     def show; end  
 
     def new 
       @project = Project.new
-    end
+    end 
 
     def create
       @project = @client.projects.new(project_params)
@@ -49,7 +49,7 @@ module Manager
     end
 
     def set_project
-      @project = Project.find(params[:id])
+      @project = @client.projects.find(params[:id])
     end
 
     def project_params
