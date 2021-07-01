@@ -6,11 +6,11 @@ module Manager
 		end
 
 		def create
-			@payment = Payment.new
+			@payment = Payment.new(payments_params)
 
 	    if @payment.save
 	    	flash[:notice] = "sdafgasdg"
-	       redirect_to manager_client_project_path
+	       redirect_to root_path
 	    else
 	      render :new
 	    end
@@ -19,7 +19,7 @@ module Manager
 		private
 
 		def payments_params 
-			params.require(:payment).permit(:payment)
+			params.require(:payment).permit(:payment, :client_id, :project_id)
 		end
 	end
 end

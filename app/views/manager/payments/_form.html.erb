@@ -13,21 +13,21 @@
   <% end %>
 	<br>
 
-	<div class="field" >
+	<div class="field">
 		<%= f.label :payment %>
-		<%= f.text_field :payment, placeholder: "10,000 Rs", class: "form-control", required: true %>
+		<%= f.text_field :payment, placeholder: "99,999 Rs", class: "form-control", required: true %>
 	</div>
 	<br>
 
-	<div class="field" >
+	<div class="field">
 		<%= f.label :Client_id %>
-		<%= f.select :client_id, ['client_id'] %>
+		<%= f.collection_select :client_id, Client.order(:id), :id, :name, required: true  %>
 	</div>
 	<br>
 
-	<div class="field" >
+	<div class="field">
 		<%= f.label :Project_id %>
-		<%= f.select :project_id, ['project_id'] %>
+		<%= f.collection_select :project_id, Project.order(:id), :id, :name %>
 	</div>
 	<br>
 
