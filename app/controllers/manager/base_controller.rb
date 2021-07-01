@@ -4,7 +4,7 @@ module Manager
 
     def non_manager
       if current_user.admin? || current_user.manager?
-        # redirect_to root_path
+        
       else
         flash[:notice] = 'You are not validate for this action'
         redirect_to new_user_session_path

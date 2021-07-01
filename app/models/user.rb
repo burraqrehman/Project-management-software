@@ -16,22 +16,6 @@ class User < ApplicationRecord
 
   enum roles: ROLES
 
-  # def toggle_status!
-  #   if active?
-  #     disable!
-  #   else
-  #     enable!
-  #   end
-  # end
-
-  # def disable!
-  #   update(active: false)
-  # end
-
-  # def enable!
-  #   update(active: true)
-  # end
-
   def active_for_authentication?
     super and self.active?
   end

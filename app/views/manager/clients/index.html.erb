@@ -1,13 +1,13 @@
 <div class="container">
 
-  <h1>Clients</h1>
+  <h1 class="text-center">Clients!</h1>
 
   <% if user_signed_in? && current_user %>
     <%= link_to 'New Client', new_manager_client_path, class: "btn btn-danger btn-sm" %>
-  <% end %>
+  <% end %><br><br><hr>
 
   <table class="table table-responsive table-hover table-strips">
-    <thead>
+    <thead style= "background-color:#add8e6" >
       <tr>
         <th scope="row">Name</th>
         <th scope="row">Profession</th>

@@ -4,16 +4,16 @@
 
   <% if user_signed_in? %>
       <%= link_to 'New User', new_admin_user_path, class: "btn btn-warning" %>
-  <% end %>
+  <% end %><br><br>
 
   <table class="table table-responsive table-hover">
-    <thead>
+    <thead style= "background-color:#add8e6">
         <tr>
-            <th scope="row"> Name </th>
-            <th scope="row"> Email </th>
-            <th scope="row"> Contact </th>
-            <th scope="row"> Status </th>
-            <th scope="row="> </th>
+          <th scope="row"> Name </th>
+          <th scope="row"> Email </th>
+          <th scope="row"> Contact </th>
+          <th scope="row"> Status </th>
+          <th colspan="3"></th>
         </tr>
     </thead>
     <tbody>
