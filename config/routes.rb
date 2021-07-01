@@ -1,16 +1,30 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
 
-  namespace :admin do
-    resources :users
-    resources :projects do 
-      resources :comments
+  namespace :manager do
+    resources :clients do 
+      resources :projects do 
+        resources :comments
+      end
     end
+
+    resources :payments
+    
   end 
 
-  root "admin/projects#index"
-  
-  resources :clients
+  namespace :admin do
+    resources :users do
+      member do 
+        get :enable
+        get :disable
+      end
+    end
+  end
+
+
+  root "manager/clients#index"
 
 end

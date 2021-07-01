@@ -1,11 +1,8 @@
 <br>
 <div class="container">
-
-		<% if current_user %>
-		<%= link_to 'Edit', edit_admin_project_path, class: "btn btn-danger" %>
-		<%= link_to 'Delete', [:admin, @project], method: :delete, data: { confirm: 'Are you sure to delete project?' }, class: "btn btn-warning" %> 
-		<% end %>
-		<%= link_to 'Back', root_path, class: "btn btn-info" %>
+ 
+		<%= link_to 'Back', manager_client_projects_path(@project), class: "btn btn-dark btn-sm" %>
+		<%= link_to 'Add Payment', new_manager_payment_path, class: "btn btn-dark btn-sm" %>
 
 	<table class="table table-responsive table-hover">
 		<tbody>
@@ -39,13 +36,17 @@
 		</tbody>
 	</table>
 
+	<div>
+		
+	</div>
+
 	<div id = "comment-content">
 		<hr>
 		
 			<% @project.comments.each do |comment| %>
-					<%= render 'admin/comments/comment', comment: comment %>
+					<%= render 'manager/comments/comment', comment: comment %>
 			<% end %>
 
-		<%= render 'admin/comments/form' %>
+		<%= render 'manager/comments/form' %>
 	</div>
 </div> 

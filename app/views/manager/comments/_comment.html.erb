@@ -1,0 +1,11 @@
+<div class="container">
+
+  <li>
+    <%= comment.client.name %> 
+    <%= comment.content %>
+    <% if user_signed_in? & current_user %>
+      <%= link_to 'Delete', [:manager, @client, @project, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "comment_button" %>
+    <% end %>
+  </li>
+
+</div>

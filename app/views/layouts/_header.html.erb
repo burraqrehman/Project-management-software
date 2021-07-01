@@ -4,32 +4,41 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<%= admin_projects_path %>">Project</a>
+          <a class="nav-link active" aria-current="page" href="#"></a>
         </li>
+        <% if user_signed_in? && current_user.admin? %>
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<%= admin_users_path %>">User</a>
+          </li> 
+        <% end %>
+        <% if user_signed_in? && current_user.admin?  %>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<%= admin_users_path %>">User</a>
-        </li> 
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<%= clients_path %>">Client</a>
+            <a class="nav-link active" aria-current="page" href="<%= manager_clients_path %>">Client</a>
         </li>
+        <% end %>
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>
       </ul>
+    
+      <div class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+        <% end %>
+      </div>
       
-        <div class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.email, edit_user_registration_path %></li> |||
-            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li class=""><%= link_to "Sign Up", new_user_registration_path %></li> |||
-            <li><%= link_to "Log In", new_user_session_path %></li>
-          <% end %>
-        </div>
     </div>
   </div>
+</nav>
+
+<nav class="navbar fixed-bottom navbar-dark bg-dark" >
+  <h6 class="navbar-text">
+    "Project Management Software" 
+  </h6>
 </nav>
