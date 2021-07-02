@@ -3,14 +3,15 @@ module Manager
 
 		def new
 			@payment = Payment.new
+			@clients = Client.order(:created_at)
 		end
 
 		def create
 			@payment = Payment.new(payments_params)
 
 	    if @payment.save
-	    	flash[:notice] = "sdafgasdg"
-	       redirect_to root_path
+	    	# flash[:notice] = "sdafgasdg"
+	      redirect_to root_path
 	    else
 	      render :new
 	    end

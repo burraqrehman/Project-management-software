@@ -4,6 +4,8 @@ Rails.application.routes.draw do
         sessions: 'users/sessions'
       }
 
+  resources :users, only: [:show]
+     
   namespace :manager do
     resources :clients do 
       resources :projects do 

@@ -18,7 +18,6 @@ module Manager
       @client = Client.new(client_params)
 
       if @client.save
-        
         redirect_to [:manager, @client], notice: "Client was successfully created."
       else
         render :new

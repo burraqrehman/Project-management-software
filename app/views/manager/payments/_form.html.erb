@@ -1,39 +1,55 @@
 <div class="container">
+  <%= form_for [:manager, @payment] do |f| %>
+    <% if @payment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@payment.errors.count, "error") %> Fill this Credential First!</h2>
+        <ul>
+          <% @payment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-	<%= form_for [:manager, @payment] do |f| %>
-		<% if @payment.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@payment.errors.count, "error") %> Fill this Credential First!</h2>
-	      <ul>
-	      <% @payment.errors.full_messages.each do |msg| %>
-	        <li><%= msg %></li>
-	      <% end %>
-	      </ul>
-	    </div>
+    <br>
+
+    <div class="field">
+      <%= f.label :payment %>
+      <%= f.text_field :payment, placeholder: "99,999 Rs", class: "form-control", required: true %>
+    </div>
+    <br>
+
+    <div class="field">
+      <%= f.label :client %>
+      <%= f.collection_select :client_id, @clients, :id, :name, required: true, include_blank: true %>
+    </div>
+    <br>
+
+    <div class="field">
+      <%= f.label :project %>
+      <%= f.grouped_collection_select :project_id, @clients, :projects, :name, :id, :name, include_blank: true %>
+    </div>
+    <br>
+
+    <div class="container">
+      <%= f.submit class: "btn btn-outline-info btn-sm" %>
+    </div>
   <% end %>
-	<br>
-
-	<div class="field">
-		<%= f.label :payment %>
-		<%= f.text_field :payment, placeholder: "99,999 Rs", class: "form-control", required: true %>
-	</div>
-	<br>
-
-	<div class="field">
-		<%= f.label :Client_id %>
-		<%= f.collection_select :client_id, Client.order(:id), :id, :name, required: true  %>
-	</div>
-	<br>
-
-	<div class="field">
-		<%= f.label :Project_id %>
-		<%= f.collection_select :project_id, Project.order(:id), :id, :name %>
-	</div>
-	<br>
-
-	<div class="container">
-		<%= f.submit class: "btn btn-outline-info btn-sm" %>
-	</div>
 </div>
 
-<% end %>
+<script>
+  jQuery ->
+    $('#payment_project_id').parent().hide()
+      projects = $('#payment_project_id').html()
+    $('#payment_client_id').change ->
+      client = $('#payment_client_id :selected').text()
+      escaped_client = client.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+      options = $(projects).filter("optgroup[label='#{escaped_client}']").html()
+      if options
+        $('#payment_project_id').html(options)
+        $('#payment_project_id').parent().show()
+      else
+        $('#payment_project_id').empty()
+        $('#payment_project_id').parent().hide()
+
+</script>

@@ -7,7 +7,7 @@ class Project < ApplicationRecord
 	
 	has_one_attached :image
 
-	validates :name, presence: true, uniqueness: { case_sensitive: false }
+	validates :name, presence: true
 	validates :documentation, :time_tracking, presence: true
 	validates :project_cost, presence: true, numericality: true
 
