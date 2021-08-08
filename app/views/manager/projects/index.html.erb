@@ -21,7 +21,7 @@
     <tbody>
       <% @projects.each do |project| %>
       <tr>
-        <td><%= project.name %></td>
+        <td><h5><%= project.name %></h5></td>
         <td><%= project.documentation %></td>
         <% if @client.projects.present? && user_signed_in? && current_user %>
           <td><%= link_to 'Edit', edit_manager_client_project_path(@client, project), class: "btn btn-warning btn-sm" %></td>

@@ -18,7 +18,7 @@
     <tbody>
       <% @clients.each do |client| %>
         <tr>
-          <td><%= client.name %></td>
+          <td><h5><%= client.name %></h5></td>
           <td><%= client.profession %></td>
           <td><%= link_to 'Show Client', [:manager, client], class: "btn btn-dark btn-sm" %></td>
           <td><%= link_to 'Projects', manager_client_projects_path(client, @project), class: "btn btn-secondary btn-sm" %></td>
